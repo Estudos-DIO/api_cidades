@@ -1,4 +1,4 @@
-# Cities API
+# cidades API
 
 ## Requirements
 
@@ -16,7 +16,7 @@
 * [Postgres Docker Hub](https://hub.docker.com/_/postgres)
 
 ```shell script
-docker run --name cities-db -d -p 5432:5432 -e POSTGRES_USER=postgres_user_city -e POSTGRES_PASSWORD=super_password -e POSTGRES_DB=cities postgres
+docker run --name dio-cidades-db -d -p 5432:5432 -e POSTGRES_USER=usuario_postgres -e POSTGRES_PASSWORD=senha -e POSTGRES_DB=cidades postgres
 ```
 
 ### Populate
@@ -28,11 +28,14 @@ cd ~/workspace/sql-paises-estados-cidades/PostgreSQL
 
 docker run -it --rm --net=host -v $PWD:/tmp postgres /bin/bash
 
-psql -h localhost -U postgres_user_city cities -f /tmp/pais.sql
-psql -h localhost -U postgres_user_city cities -f /tmp/estado.sql
-psql -h localhost -U postgres_user_city cities -f /tmp/cidade.sql
+OBS.: $PWD corresponde ao diretório que se deseja mapear.
 
-psql -h localhost -U postgres_user_city cities
+Info: psql -h localhost -U <nome_usuário> <bando_de_dados> -f /tmp/pais.sql
+psql -h localhost -U usuario_postgres cidades -f /tmp/pais.sql
+psql -h localhost -U usuario_postgres cidades -f /tmp/estado.sql
+psql -h localhost -U usuario_postgres cidades -f /tmp/cidade.sql
+
+psql -h localhost -U usuario_postgres cidades
 
 CREATE EXTENSION cube; 
 CREATE EXTENSION earthdistance;
@@ -47,9 +50,9 @@ CREATE EXTENSION earthdistance;
 ### Access
 
 ```shell script
-docker exec -it cities-db /bin/bash
+docker exec -it dio-cidades-db /bin/bash
 
-psql -U postgres_user_city cities
+psql -U usuario_postgres cidades
 ```
 
 ### Query Earth Distance
