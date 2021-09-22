@@ -20,15 +20,23 @@ public class Cidade {
 
     private String nome;
     private String uf;
+
+    @Column(name = "ibge")
     private Integer codigoIBGE;
 
+    private float latitude;
+    private float longitude;
+
+    @Column(name = "cod_tom" )
+    private Integer codigoTom;
+
     // 1ª opção
-    @Column(name = "lat_long")
-    private String geoLocalizacao;
+    //@Column(name = "lat_lon")
+    //private String geoLocalizacao;
 
     // 2ª opção
     @Type(type = "point")
-    @Column(name="lat_long", updatable = false, insertable = false)
+    @Column(name="lat_lon", updatable = false, insertable = false)
     private Point localizacao;
 
     /**
@@ -46,12 +54,12 @@ public class Cidade {
      * @param geoLocalizacao Geolocalização em String
      * @param localizacao Geolocalização em Point
      */
-    public Cidade(Long id, String nome, String uf, Integer codigoIBGE, String geoLocalizacao, Point localizacao) {
+    public Cidade(Long id, String nome, String uf, Integer codigoIBGE, /*String geoLocalizacao,*/ Point localizacao) {
         this.id = id;
         this.nome = nome;
         this.uf = uf;
         this.codigoIBGE = codigoIBGE;
-        this.geoLocalizacao = geoLocalizacao;
+        //this.geoLocalizacao = geoLocalizacao;
         this.localizacao = localizacao;
     }
 
@@ -87,13 +95,13 @@ public class Cidade {
         this.codigoIBGE = codigoIBGE;
     }
 
-    public String getGeoLocalizacao() {
-        return geoLocalizacao;
-    }
+    //public String getGeoLocalizacao() {
+    //    return geoLocalizacao;
+    //}
 
-    public void setGeoLocalizacao(String geoLocalizacao) {
-        this.geoLocalizacao = geoLocalizacao;
-    }
+    //public void setGeoLocalizacao(String geoLocalizacao) {
+    //    this.geoLocalizacao = geoLocalizacao;
+    //}
 
     public Point getLocalizacao() {
         return localizacao;
@@ -103,4 +111,27 @@ public class Cidade {
         this.localizacao = localizacao;
     }
 
+    public Integer getCodigoTom() {
+        return codigoTom;
+    }
+
+    public void setCodigoTom(Integer codigoTom) {
+        this.codigoTom = codigoTom;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
 }
