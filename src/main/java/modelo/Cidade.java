@@ -31,8 +31,8 @@ public class Cidade {
     private Integer codigoTom;
 
     // 1ª opção
-    //@Column(name = "lat_lon")
-    //private String geoLocalizacao;
+    @Column(name = "lat_lon")
+    private String geoLocalizacao;
 
     // 2ª opção
     @Type(type = "point")
@@ -54,12 +54,12 @@ public class Cidade {
      * @param geoLocalizacao Geolocalização em String
      * @param localizacao Geolocalização em Point
      */
-    public Cidade(Long id, String nome, String uf, Integer codigoIBGE, /*String geoLocalizacao,*/ Point localizacao) {
+    public Cidade(Long id, String nome, String uf, Integer codigoIBGE, String geoLocalizacao, Point localizacao) {
         this.id = id;
         this.nome = nome;
         this.uf = uf;
         this.codigoIBGE = codigoIBGE;
-        //this.geoLocalizacao = geoLocalizacao;
+        this.geoLocalizacao = geoLocalizacao;
         this.localizacao = localizacao;
     }
 
@@ -95,13 +95,13 @@ public class Cidade {
         this.codigoIBGE = codigoIBGE;
     }
 
-    //public String getGeoLocalizacao() {
-    //    return geoLocalizacao;
-    //}
+    public String getGeoLocalizacao() {
+        return geoLocalizacao;
+    }
 
-    //public void setGeoLocalizacao(String geoLocalizacao) {
-    //    this.geoLocalizacao = geoLocalizacao;
-    //}
+    public void setGeoLocalizacao(String geoLocalizacao) {
+        this.geoLocalizacao = geoLocalizacao;
+    }
 
     public Point getLocalizacao() {
         return localizacao;
